@@ -1,4 +1,4 @@
-# DNS Step Bench
+# DNS Stepping Benchmark Tool
 
 A lightweight Python tool for stress-testing DNS servers with a "stepping" pattern. It automates the process of ramping up query volume to identify performance bottlenecks and rate limits.
 
