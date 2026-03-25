@@ -7,6 +7,7 @@ import os
 import random
 import string
 import time
+import tempfile
 
 DEFAULT_DOMAINS = [
     "google.com", "amazon.com", "apple.com", "facebook.com", "microsoft.com",
@@ -61,14 +62,11 @@ def main():
     parser.add_argument("-s", "--step", type=int, default=100, help="Step size")
     parser.add_argument("-d", "--duration", type=int, default=10, help="Duration per step")
     parser.add_argument("--cache-bust", action="store_true", help="Force unique queries to bypass cache")
-    import tempfile
 
-    DEFAULT_DOMAINS = [
-    ...
-        args = parser.parse_args()
+    args = parser.parse_args()
 
-        query_file = args.query_file or os.path.join(tempfile.gettempdir(), "dns_bench_queries.txt")
-        generate_query_file(query_file, count=args.max_rate * args.duration * 2, cache_bust=args.cache_bust)
+    query_file = args.query_file or os.path.join(tempfile.gettempdir(), "dns_bench_queries.txt")
+    generate_query_file(query_file, count=args.max_rate * args.duration * 2, cache_bust=args.cache_bust)
 
     rates = range(args.step, args.max_rate + 1, args.step)
     
